@@ -1,3 +1,4 @@
+# ![logo](https://raw.githubusercontent.com/azerothcore/azerothcore.github.io/master/images/logo-github.png) AzerothCore
 # mod-npc_services
 ### This is a module for [AzerothCore](http://www.azerothcore.org)
 
