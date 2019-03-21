@@ -26,6 +26,10 @@
 ### Usage
 - Enable this module and talk with the Services NPC :D
 
+### Showcase / Video 
+[Watch Video here](https://youtu.be/-BpBdUj9XLc)
+
+
 ## Credits
 * [Poszer](https://github.com/Poszer): (author of the module): 
 
