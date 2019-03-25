@@ -32,5 +32,6 @@
 
 ## Credits
 * [Poszer](https://github.com/Poszer): (author of the module): 
+* [Masterking32](https://github.com/masterking32): (Thanks for the help with the module creation & General support): 
 
 AzerothCore: [repository](https://github.com/azerothcore) - [website](http://azerothcore.org/) - [discord chat community](https://discord.gg/PaqQRkd)
