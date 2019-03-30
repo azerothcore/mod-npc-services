@@ -1,5 +1,5 @@
 # ![logo](https://raw.githubusercontent.com/azerothcore/azerothcore.github.io/master/images/logo-github.png) AzerothCore
-# mod-npc_services
+# mod-npc-services
 ### This is a module for [AzerothCore](http://www.azerothcore.org)
 
 #### Features:
@@ -32,5 +32,6 @@
 
 ## Credits
 * [Poszer](https://github.com/Poszer): (author of the module): 
+* [Masterking32](https://github.com/masterking32): (Thanks for the help with the module creation & General support): 
 
 AzerothCore: [repository](https://github.com/azerothcore) - [website](http://azerothcore.org/) - [discord chat community](https://discord.gg/PaqQRkd)
