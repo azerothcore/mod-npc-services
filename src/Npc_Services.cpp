@@ -111,20 +111,20 @@ public:
 				player->GetSession()->SendShowMailBox(player->GetGUID());
 				break;
 
-        case 10: // Learn Dual Talent Specialization
-            player->CLOSE_GOSSIP_MENU();
-            if (player->IsInCombat())
-            {
-                player->CLOSE_GOSSIP_MENU();
-                player->GetSession()->SendNotification("You are in combat!", LANG_UNIVERSAL, player);
-                return false;
-            }
+		case 10: // Learn Dual Talent Specialization
+				player->CLOSE_GOSSIP_MENU();
+				if (player->IsInCombat())
+				{
+				player->CLOSE_GOSSIP_MENU();
+				player->GetSession()->SendNotification("You are in combat!", LANG_UNIVERSAL, player);
+				return false;
+				}
 
-            player->CastSpell(player, 63624);
-            player->CastSpell(player, 31726);
-            player->GetSession()->SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFDual Talents Learned Succesfully!");
-            return true;
-            break;
+				player->CastSpell(player, 63624);
+				player->CastSpell(player, 31726);
+				player->GetSession()->SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFDual Talents Learned Succesfully!");
+				return true;
+				break;
 
              }
                 return true;
