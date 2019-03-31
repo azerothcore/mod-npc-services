@@ -16,7 +16,8 @@ public:
 		player->ADD_GOSSIP_ITEM(10, "|TInterface\\icons\\INV_Hammer_24:40:40:-18|t Repair Items", GOSSIP_SENDER_MAIN, 6);							// Repair Items
 		player->ADD_GOSSIP_ITEM(10, "|TInterface\\icons\\Achievement_WorldEvent_Lunar:40:40:-18|t Reset Talents", GOSSIP_SENDER_MAIN, 7);			// Reset Talents
 		player->ADD_GOSSIP_ITEM(10, "|TInterface/Icons/INV_Misc_Bag_07:40:40:-18|t Bank", GOSSIP_SENDER_MAIN, 8);                                   // Open Bank
-		player->ADD_GOSSIP_ITEM(10, "|TInterface/Icons/INV_Letter_11:40:40:-18|t Mail", GOSSIP_SENDER_MAIN, 9);                                     // Open Mailbox 
+		player->ADD_GOSSIP_ITEM(10, "|TInterface/Icons/INV_Letter_11:40:40:-18|t Mail", GOSSIP_SENDER_MAIN, 9);                                     // Open Mailbox
+        player->ADD_GOSSIP_ITEM(10, "|TInterface/Icons/achievement_general:40:40:-18|t Learn Dual Talents", GOSSIP_SENDER_MAIN, 10);                                     // Learn Dualspec
 		player->SEND_GOSSIP_MENU(1, creature->GetGUID());
         return true;
 	}
@@ -108,6 +109,21 @@ public:
 		case 9: // MAIL
 				player->CLOSE_GOSSIP_MENU();
 				player->GetSession()->SendShowMailBox(player->GetGUID());
+				break;
+
+		case 10: // Learn Dual Talent Specialization
+				player->CLOSE_GOSSIP_MENU();
+				if (player->IsInCombat())
+				{
+				player->CLOSE_GOSSIP_MENU();
+				player->GetSession()->SendNotification("You are in combat!", LANG_UNIVERSAL, player);
+				return false;
+				}
+
+				player->CastSpell(player, 63624);
+				player->CastSpell(player, 31726);
+				player->GetSession()->SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFDual Talents Learned Succesfully!");
+				return true;
 				break;
 
              }

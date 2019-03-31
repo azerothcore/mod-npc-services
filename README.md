@@ -13,6 +13,7 @@
 7. Reset Talents
 8. Open Bank
 9. Open Mailbox
+10. Learn Dual Talent Specialization ( New ) 
 
 ### This module currently requires:
 - AzerothCore v1.0.1+
