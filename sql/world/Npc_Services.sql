@@ -1,5 +1,4 @@
-Use world;
-
+DELETE FROM `creature_template` WHERE `entry` = 55002;
 Set @NpcName = "Services NPC",
 	@NpcSubname = "AzerothCore",
 	@NpcEntry = 55002,
