@@ -33,7 +33,7 @@ public:
 			if (player->IsInCombat())
 			{
 				player->CLOSE_GOSSIP_MENU();
-				player->GetSession()->SendNotificationYou("You are in combat!");
+				player->GetSession()->SendNotification("You are in combat!");
 				return false;
 				}
 				else if(player->getPowerType() == POWER_MANA)
