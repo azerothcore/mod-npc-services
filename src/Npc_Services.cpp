@@ -1,3 +1,4 @@
+#include "Player.h"
 #include "ScriptMgr.h"
 #include "ScriptedGossip.h"
 
@@ -32,7 +33,7 @@ public:
 			if (player->IsInCombat())
 			{
 				player->CLOSE_GOSSIP_MENU();
-				player->GetSession()->SendNotification("You are in combat!", LANG_UNIVERSAL, player);
+				player->GetSession()->SendNotification("You are in combat!");
 				return false;
 				}
 				else if(player->getPowerType() == POWER_MANA)
@@ -62,7 +63,7 @@ public:
 				if (player->IsInCombat())
 				{
 				player->CLOSE_GOSSIP_MENU();
-				player->GetSession()->SendNotification("You are in combat!", LANG_UNIVERSAL, player);
+				player->GetSession()->SendNotification("You are in combat!");
 				return false;
 				}
 
@@ -116,7 +117,7 @@ public:
 				if (player->IsInCombat())
 				{
 				player->CLOSE_GOSSIP_MENU();
-				player->GetSession()->SendNotification("You are in combat!", LANG_UNIVERSAL, player);
+				player->GetSession()->SendNotification("You are in combat!");
 				return false;
 				}
 
