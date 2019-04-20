@@ -10,7 +10,7 @@ public:
         bool OnGossipHello(Player *player, Creature *creature)
         {
 		player->ADD_GOSSIP_ITEM(10, "|TInterface\\icons\\Spell_Nature_Regenerate:40:40:-18|t Restore HP and MP", GOSSIP_SENDER_MAIN, 1);			// Restore Health and Mana
-		//player->ADD_GOSSIP_ITEM(10, "|TInterface\\icons\\Achievement_BG_winAB_underXminutes:40:40:-18|t Reset Instances", GOSSIP_SENDER_MAIN, 2);	// Reset Instances
+		player->ADD_GOSSIP_ITEM(10, "|TInterface\\icons\\Achievement_BG_winAB_underXminutes:40:40:-18|t Reset Instances", GOSSIP_SENDER_MAIN, 2);	// Reset Instances
 		player->ADD_GOSSIP_ITEM(10, "|TInterface\\icons\\SPELL_HOLY_BORROWEDTIME:40:40:-18|t Reset Cooldowns", GOSSIP_SENDER_MAIN, 3);				// Reset Cooldowns
 		player->ADD_GOSSIP_ITEM(10, "|TInterface\\icons\\Achievement_BG_AB_defendflags:40:40:-18|t Reset Combat", GOSSIP_SENDER_MAIN, 4);			// Leave Combat
 		player->ADD_GOSSIP_ITEM(10, "|TInterface\\icons\\Spell_Shadow_DeathScream:40:40:-18|t Remove Sickness", GOSSIP_SENDER_MAIN, 5);				// Remove Sickness
@@ -44,19 +44,30 @@ public:
 				player->CastSpell(player, 31726);
 				break;
 
-	   /* case 2: // Reset Instances
+	    case 2: // Reset Instances
 				player->CLOSE_GOSSIP_MENU();
 				for (uint8 i = 0; i < MAX_DIFFICULTY; ++i)
 				{
-						Player::BoundInstancesMap &binds = player->GetBoundInstances(Difficulty(i));
-						for (Player::BoundInstancesMap::iterator itr = binds.begin(); itr != binds.end();)
-						{
-								player->UnbindInstance(itr, Difficulty(i));
-						}
+                    BoundInstancesMap const& m_boundInstances = sInstanceSaveMgr->PlayerGetBoundInstances(player->GetGUIDLow(), Difficulty(i));
+                    for (BoundInstancesMap::const_iterator itr = m_boundInstances.begin(); itr != m_boundInstances.end();)
+                    {
+                        InstanceSave* save = itr->second.save;
+                        if (itr->first != player->GetMapId())
+                        {
+                            uint32 resetTime = itr->second.extended ? save->GetExtendedResetTime() : save->GetResetTime();
+                            uint32 ttr = (resetTime >= time(nullptr) ? resetTime - time(nullptr) : 0);
+                            sInstanceSaveMgr->PlayerUnbindInstance(player->GetGUIDLow(), itr->first, Difficulty(i), true, player);
+                            itr = m_boundInstances.begin();
+                        }
+                        else
+                            ++itr;
+                    }
 				}
+
 				player->GetSession()->SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFInstances succesfully reseted!");
 				player->CastSpell(player, 59908);
-				break;*/
+                return true;
+				break;
 
 		case 3: // Reset Cooldowns
 				player->CLOSE_GOSSIP_MENU();
