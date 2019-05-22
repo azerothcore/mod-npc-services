@@ -1,3 +1,10 @@
+/*
+** Written by MtgCore
+** Rewritten by Poszer & Talamortis https://github.com/poszer/ & https://github.com/talamortis/
+** AzerothCore 2019 http://www.azerothcore.org/
+** Cleaned and made into a module by Micrah https://github.com/milestorme/
+*/
+
 #include "Player.h"
 #include "ScriptMgr.h"
 #include "ScriptedGossip.h"
