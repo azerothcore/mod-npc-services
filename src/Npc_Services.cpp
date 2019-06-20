@@ -140,7 +140,7 @@ public:
 				}
 
 				player->CastSpell(player, 63624);
-				player->CastSpell(player, 31726);
+                                player->CastSpell(player, 63680);
 				player->GetSession()->SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFDual Talents Learned Succesfully!");
 				return true;
 				break;
