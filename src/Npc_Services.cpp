@@ -17,7 +17,7 @@ public:
         bool OnGossipHello(Player *player, Creature *creature)
         {
 		player->ADD_GOSSIP_ITEM(10, "|TInterface\\icons\\Spell_Nature_Regenerate:40:40:-18|t Restore HP and MP", GOSSIP_SENDER_MAIN, 1);			// Restore Health and Mana
-		player->ADD_GOSSIP_ITEM(10, "|TInterface\\icons\\Achievement_BG_winAB_underXminutes:40:40:-18|t Reset Instances", GOSSIP_SENDER_MAIN, 2);	// Reset Instances
+		//player->ADD_GOSSIP_ITEM(10, "|TInterface\\icons\\Achievement_BG_winAB_underXminutes:40:40:-18|t Reset Instances", GOSSIP_SENDER_MAIN, 2);	// Reset Instances
 		player->ADD_GOSSIP_ITEM(10, "|TInterface\\icons\\SPELL_HOLY_BORROWEDTIME:40:40:-18|t Reset Cooldowns", GOSSIP_SENDER_MAIN, 3);				// Reset Cooldowns
 		player->ADD_GOSSIP_ITEM(10, "|TInterface\\icons\\Achievement_BG_AB_defendflags:40:40:-18|t Reset Combat", GOSSIP_SENDER_MAIN, 4);			// Leave Combat
 		player->ADD_GOSSIP_ITEM(10, "|TInterface\\icons\\Spell_Shadow_DeathScream:40:40:-18|t Remove Sickness", GOSSIP_SENDER_MAIN, 5);				// Remove Sickness
@@ -51,7 +51,7 @@ public:
 				player->CastSpell(player, 31726);
 				break;
 
-	    case 2: // Reset Instances
+	    /*case 2: // Reset Instances
 				player->CLOSE_GOSSIP_MENU();
 				for (uint8 i = 0; i < MAX_DIFFICULTY; ++i)
 				{
@@ -74,7 +74,7 @@ public:
 				player->GetSession()->SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFInstances succesfully reseted!");
 				player->CastSpell(player, 59908);
                 return true;
-				break;
+				break;*/
 
 		case 3: // Reset Cooldowns
 				player->CLOSE_GOSSIP_MENU();
@@ -140,7 +140,7 @@ public:
 				}
 
 				player->CastSpell(player, 63624);
-				player->CastSpell(player, 31726);
+                                player->CastSpell(player, 63680);
 				player->GetSession()->SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFDual Talents Learned Succesfully!");
 				return true;
 				break;
