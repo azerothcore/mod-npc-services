@@ -139,9 +139,12 @@ public:
 				return false;
 				}
 
-				player->CastSpell(player, 63624);
-                                player->CastSpell(player, 63680);
-				player->GetSession()->SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFDual Talents Learned Succesfully!");
+                                player->learnSpell(63644);
+                                player->CastSpell(player, 31726);
+                                player->CastSpell(player, 63624);
+                                player->learnSpell(63645);
+                                player->UpdateSpecCount(2);
+                                player->GetSession()->SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFDual Talents Learned Succesfully!");
 				return true;
 				break;
 
