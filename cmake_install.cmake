@@ -24,4 +24,3 @@ if(NOT CMAKE_INSTALL_COMPONENT)
     set(CMAKE_INSTALL_COMPONENT)
   endif()
 endif()
-
