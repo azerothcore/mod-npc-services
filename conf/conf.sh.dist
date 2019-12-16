@@ -4,7 +4,6 @@
 # CUSTOM
 #
 
-
 DB_WORLD_CUSTOM_PATHS+=(
 	$MOD_NPC_SERVICES_ROOT"/sql/world/"
 )
