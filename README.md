@@ -1,7 +1,8 @@
 # ![logo](https://raw.githubusercontent.com/azerothcore/azerothcore.github.io/master/images/logo-github.png) AzerothCore
-# mod-npc-services
+## mod-npc-services
 ### This is a module for [AzerothCore](http://www.azerothcore.org)
-- Latest build status with azerothcore: [![Build Status](https://travis-ci.org/azerothcore/mod-npc-services.svg?branch=master)](https://travis-ci.org/azerothcore/mod-npc-services)
+- Latest build status with azerothcore: [![Build Status](https://github.com/azerothcore/mod-npc-services/workflows/core-build/badge.svg?branch=master&event=push)](https://github.com/azerothcore/mod-npc-services)
+
 #### Features:
 - Character services:
 1. Restore Health & Mana
