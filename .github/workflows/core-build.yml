@@ -9,7 +9,7 @@ jobs:
       fail-fast: false
       matrix:
         compiler: [clang]
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     name: ${{ matrix.compiler }}
     env:
       COMPILER: ${{ matrix.compiler }}
