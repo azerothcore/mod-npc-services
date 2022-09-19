@@ -62,7 +62,7 @@ public:
                         InstanceSave* save = itr->second.save;
                         if (itr->first != player->GetMapId())
                         {
-                            uint32 resetTime = itr->second.extended ? save->GetExtendedResetTime() : save->GetResetTime();
+//                     BoundInstancesMap const& m_boundInstances = sInstanceSaveMgr->PlayerGetBoundInstances(player->GetGUID(), Difficulty(i));
 //                            uint32 ttr = (resetTime >= time(nullptr) ? resetTime - time(nullptr) : 0);
                             sInstanceSaveMgr->PlayerUnbindInstance(player->GetGUID(), itr->first, Difficulty(i), true, player);
                             itr = m_boundInstances.begin();
