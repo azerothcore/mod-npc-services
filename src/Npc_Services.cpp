@@ -17,15 +17,15 @@ public:
         bool OnGossipHello(Player *player, Creature *creature)
         {
 		AddGossipItemFor(player, 10, "|TInterface\\icons\\Spell_Nature_Regenerate:40:40:-18|t Restore HP and MP", GOSSIP_SENDER_MAIN, 1);			// Restore Health and Mana
-		//AddGossipItemFor(player, 10, "|TInterface\\icons\\Achievement_BG_winAB_underXminutes:40:40:-18|t Reset Instances", GOSSIP_SENDER_MAIN, 2);	// Reset Instances
+		AddGossipItemFor(player, 10, "|TInterface\\icons\\Achievement_BG_winAB_underXminutes:40:40:-18|t Reset Instances", GOSSIP_SENDER_MAIN, 2);	// Reset Instances
 		AddGossipItemFor(player, 10, "|TInterface\\icons\\SPELL_HOLY_BORROWEDTIME:40:40:-18|t Reset Cooldowns", GOSSIP_SENDER_MAIN, 3);				// Reset Cooldowns
 		AddGossipItemFor(player, 10, "|TInterface\\icons\\Achievement_BG_AB_defendflags:40:40:-18|t Reset Combat", GOSSIP_SENDER_MAIN, 4);			// Leave Combat
-		AddGossipItemFor(player, 10, "|TInterface\\icons\\Spell_Shadow_DeathScream:40:40:-18|t Remove Sickness", GOSSIP_SENDER_MAIN, 5);				// Remove Sickness
+		AddGossipItemFor(player, 10, "|TInterface\\icons\\Spell_Shadow_DeathScream:40:40:-18|t Remove Sickness", GOSSIP_SENDER_MAIN, 5);		    // Remove Sickness
 		AddGossipItemFor(player, 10, "|TInterface\\icons\\INV_Hammer_24:40:40:-18|t Repair Items", GOSSIP_SENDER_MAIN, 6);							// Repair Items
 		AddGossipItemFor(player, 10, "|TInterface\\icons\\Achievement_WorldEvent_Lunar:40:40:-18|t Reset Talents", GOSSIP_SENDER_MAIN, 7);			// Reset Talents
 		AddGossipItemFor(player, 10, "|TInterface/Icons/INV_Misc_Bag_07:40:40:-18|t Bank", GOSSIP_SENDER_MAIN, 8);                                   // Open Bank
 		AddGossipItemFor(player, 10, "|TInterface/Icons/INV_Letter_11:40:40:-18|t Mail", GOSSIP_SENDER_MAIN, 9);                                     // Open Mailbox
-    AddGossipItemFor(player, 10, "|TInterface/Icons/achievement_general:40:40:-18|t Learn Dual Talents", GOSSIP_SENDER_MAIN, 10);                                     // Learn Dualspec
+        AddGossipItemFor(player, 10, "|TInterface/Icons/achievement_general:40:40:-18|t Learn Dual Talents", GOSSIP_SENDER_MAIN, 10);                // Learn Dualspec
 
 		SendGossipMenuFor(player, 1, creature->GetGUID());
         return true;
@@ -52,11 +52,11 @@ public:
 				player->CastSpell(player, 31726);
 				break;
 
-	    /*case 2: // Reset Instances
+	    case 2: // Reset Instances
 				CloseGossipMenuFor(player);
 				for (uint8 i = 0; i < MAX_DIFFICULTY; ++i)
 				{
-                    BoundInstancesMap const& m_boundInstances = sInstanceSaveMgr->PlayerGetBoundInstances(player->GetGUIDLow(), Difficulty(i));
+                    BoundInstancesMap const& m_boundInstances = sInstanceSaveMgr->PlayerGetBoundInstances(player->GetGUID(), Difficulty(i));
                     for (BoundInstancesMap::const_iterator itr = m_boundInstances.begin(); itr != m_boundInstances.end();)
                     {
                         InstanceSave* save = itr->second.save;
@@ -64,7 +64,7 @@ public:
                         {
                             uint32 resetTime = itr->second.extended ? save->GetExtendedResetTime() : save->GetResetTime();
                             uint32 ttr = (resetTime >= time(nullptr) ? resetTime - time(nullptr) : 0);
-                            sInstanceSaveMgr->PlayerUnbindInstance(player->GetGUIDLow(), itr->first, Difficulty(i), true, player);
+                            sInstanceSaveMgr->PlayerUnbindInstance(player->GetGUID(), itr->first, Difficulty(i), true, player);
                             itr = m_boundInstances.begin();
                         }
                         else
@@ -75,7 +75,7 @@ public:
 				player->GetSession()->SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFInstances succesfully reseted!");
 				player->CastSpell(player, 59908);
                 return true;
-				break;*/
+				break;
 
 		case 3: // Reset Cooldowns
 				CloseGossipMenuFor(player);
@@ -156,5 +156,5 @@ public:
 
 void AddSC_Npc_Services()
 {
-        new Npc_Services();
+   new Npc_Services();
 }
