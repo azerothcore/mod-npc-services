@@ -6,6 +6,7 @@
 */
 
 #include "npc_services.h"
+#include "Chat.h"
 
 bool NpcServices::OnGossipHello(Player* player, Creature* creature)
 {
@@ -45,14 +46,14 @@ bool NpcServices::OnGossipSelect(Player* player, Creature* /*creature*/, uint32 
             if (player->IsInCombat())
             {
                 CloseGossipMenuFor(player);
-                player->GetSession()->SendNotification("You are in combat!");
+                ChatHandler(player->GetSession()).SendNotification("You are in combat!");
                 return false;
             }
             else if (player->getPowerType() == POWER_MANA)
                 player->SetPower(POWER_MANA, player->GetMaxPower(POWER_MANA));
 
             player->SetHealth(player->GetMaxHealth());
-            player->GetSession()->SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFHP & MP succesfully restored!");
+            ChatHandler(player->GetSession()).SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFHP & MP succesfully restored!");
             player->CastSpell(player, 31726);
             break;
 
@@ -73,7 +74,7 @@ bool NpcServices::OnGossipSelect(Player* player, Creature* /*creature*/, uint32 
                 }
             }
 
-            player->GetSession()->SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFInstances succesfully reseted!");
+           ChatHandler(player->GetSession()).SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFInstances succesfully reseted!");
             player->CastSpell(player, 59908);
             return true;
             break;
@@ -83,19 +84,19 @@ bool NpcServices::OnGossipSelect(Player* player, Creature* /*creature*/, uint32 
             if (player->IsInCombat())
             {
                 CloseGossipMenuFor(player);
-                player->GetSession()->SendNotification("You are in combat!");
+                ChatHandler(player->GetSession()).SendNotification("You are in combat!");
                 return false;
             }
 
             player->RemoveAllSpellCooldown();
-            player->GetSession()->SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFCooldowns succesfully reseted!");
+            ChatHandler(player->GetSession()).SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFCooldowns succesfully reseted!");
             player->CastSpell(player, 31726);
             break;
 
         case 4: // Leave Combat
             CloseGossipMenuFor(player);
             player->CombatStop();
-            player->GetSession()->SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFCombat succesfully removed!");
+            ChatHandler(player->GetSession()).SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFCombat succesfully removed!");
             player->CastSpell(player, 31726);
             break;
 
@@ -103,14 +104,14 @@ bool NpcServices::OnGossipSelect(Player* player, Creature* /*creature*/, uint32 
             CloseGossipMenuFor(player);
             if (player->HasAura(15007))
                 player->RemoveAura(15007);
-            player->GetSession()->SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFSickness succesfully removed!");
+            ChatHandler(player->GetSession()).SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFSickness succesfully removed!");
             player->CastSpell(player, 31726);
             break;
 
         case 6: // Repair Items
             CloseGossipMenuFor(player);
             player->DurabilityRepairAll(false, 0, false);
-            player->GetSession()->SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFItems repaired succesfully!");
+            ChatHandler(player->GetSession()).SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFItems repaired succesfully!");
             player->CastSpell(player, 31726);
             break;
 
@@ -118,7 +119,7 @@ bool NpcServices::OnGossipSelect(Player* player, Creature* /*creature*/, uint32 
             CloseGossipMenuFor(player);
             player->resetTalents(true);
             player->SendTalentsInfoData(false);
-            player->GetSession()->SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFTalents reseted succesfully!");
+            ChatHandler(player->GetSession()).SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFTalents reseted succesfully!");
             player->CastSpell(player, 31726);
             break;
 
@@ -137,7 +138,7 @@ bool NpcServices::OnGossipSelect(Player* player, Creature* /*creature*/, uint32 
             if (player->IsInCombat())
             {
                 CloseGossipMenuFor(player);
-                player->GetSession()->SendNotification("You are in combat!");
+                ChatHandler(player->GetSession()).SendNotification("You are in combat!");
                 return false;
             }
 
@@ -146,7 +147,7 @@ bool NpcServices::OnGossipSelect(Player* player, Creature* /*creature*/, uint32 
             player->CastSpell(player, 63624);
             player->learnSpell(63645);
             player->UpdateSpecCount(2);
-            player->GetSession()->SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFDual Talents Learned Succesfully!");
+            ChatHandler(player->GetSession()).SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFDual Talents Learned Succesfully!");
             return true;
             break;
 
