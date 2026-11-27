@@ -7,6 +7,7 @@
 
 #include "npc_services.h"
 #include "Chat.h"
+#include "SpellHistory.h"
 
 bool NpcServices::OnGossipHello(Player* player, Creature* creature)
 {
@@ -88,7 +89,7 @@ bool NpcServices::OnGossipSelect(Player* player, Creature* /*creature*/, uint32 
                 return false;
             }
 
-            player->RemoveAllSpellCooldown();
+            player->GetSpellHistory()->ResetAllCooldowns();
             ChatHandler(player->GetSession()).SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFCooldowns succesfully reseted!");
             player->CastSpell(player, 31726);
             break;
